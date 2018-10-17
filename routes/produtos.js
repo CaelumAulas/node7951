@@ -19,8 +19,17 @@ module.exports = function(app) {
                 .param('preco')
                 .passes(validator.isFloat, 'O valor do preco deve ser um float')
         if(validation.hasErrors()) {
-            res.render('produtos/form.ejs', {
-                erros: validation.getErrors()
+            res.format({
+                html: () => {
+                    res.render('produtos/form.ejs', {
+                        erros: validation.getErrors()
+                    })
+                },
+                json: () => {
+                    res.send({
+                        erros: validation.getErrors()
+                    })
+                }
             })
             return;
         }
@@ -37,6 +46,8 @@ module.exports = function(app) {
     })
 
     app.get('/produtos', function (req, res) {
+        res.header('Access-Control-Allow-Origin', '*')
+
         const connectionFactory = require('../infra/connectionFactory')
         const connection = connectionFactory()
         const ProdutosDAO = require('../infra/ProdutosDAO')
@@ -44,9 +55,20 @@ module.exports = function(app) {
         produtosDAO.pegaTodos()
             .then(function(results) {
                 const produtos = results
-                res.render('produtos/lista.ejs', {
-                    produtosNoLadoDaView: produtos
+                res.format({
+                    html: () => {
+                        res.render('produtos/lista.ejs', {
+                            produtosNoLadoDaView: produtos
+                        })
+                    }, 
+                    json: () => {
+                        res.send({
+                            livros: produtos
+                        })
+                    }
                 })
+                // curl -H "Accept: application/json"
+                // http://localhost:3000/produtos
             })
     })
 

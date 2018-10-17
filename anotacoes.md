@@ -133,3 +133,53 @@ Criada com `() => {}` Ajuda a garantir o this de onde a função foi criada
 ## Cursos de Git:
 - https://www.udemy.com/git-e-github-para-iniciantes/
 - https://www.alura.com.br/curso-online-git
+- https://www.youtube.com/watch?v=C18qzn7j4SM
+
+## Como manjar dos status do HTTP:
+- https://httpstatusdogs.com/
+
+## API REST
+- Usar os métodos do HTTP para trafegar informação pela rede
+- Stateless
+- Como acessar uma API externa via Node: https://www.npmjs.com/package/node-fetch
+
+
+====
+
+# Testes
+## Documentação
+- Ela mofa
+- É dificil de atualizar
+- não da pra garantir que o código não quebra
+======
+
+
+- Acessar os dados de alguma forma
+- Mandamos um GET para o servidor e pegamos os dados
+
+## Testes Automatizados
+
+function soma(n1, n2) {
+    return n1 * n2
+}
+
+
+if(soma(1,1) === 2) {
+
+} else {
+    provalmente a funcao soma está errada
+}
+
+## Libs de teste
+1 - npm install mocha chai
+
+## Tipos de teste
+- Unidade: Mais simplão da vida
+    - Testar uma função/trecho pequeno de código
+    - Mocha + Chai
+- Integração: subir o backend e testar os retornos
+    - Testar o retorno do nosso site/api
+    - Mocha + Chai + Supertest
+- e2e: emular um usuário usando um browser
+    - Testar fluxos de usuário
+    - https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Cypress-Is-Simple
