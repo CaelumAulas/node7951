@@ -1,0 +1,4 @@
+- Tratatamento de Erros
+- Como converter uma aplicação para uma API
+- Testes
+- Sockets 
