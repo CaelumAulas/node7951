@@ -1,0 +1,21 @@
+<textarea>
+</textarea>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+    // Acessa ai: http://46112ff0.ngrok.io/
+    // https://ngrok.com/
+    const socket = io()
+    document.querySelector('textarea')
+        .addEventListener('input', () => {
+            console.log('alo')
+            const texto = document.querySelector('textarea').value
+            socket.emit('CLIENT_NOVA_MENSAGEM', texto)
+        })
+
+
+    socket.on('SERVER_NOVA_MENSAGEM', (dadosDoServer) => {
+        document.querySelector('textarea').value = dadosDoServer
+    })
+</script>

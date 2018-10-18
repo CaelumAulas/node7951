@@ -2,15 +2,19 @@
     Casa do Códego!
 </h1>
 <script>
-    fetch('http://localhost:3000/produtos', {
-        headers: {
-            'Accept': 'application/json'
-        }
-    })
-    .then((respostaDoServidor) => {
-        return respostaDoServidor.json()
-    })
-    .then((respostaConvertidaEmObjeto) => {
-        console.log(respostaConvertidaEmObjeto)
-    })
+
+    // setInterval(() => {
+        fetch('http://localhost:3000/produtos', {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then((respostaDoServidor) => {
+            return respostaDoServidor.json()
+        })
+        .then((respostaConvertidaEmObjeto) => {
+            console.log(respostaConvertidaEmObjeto)
+        })
+    // }, 100)
+
 </script>
